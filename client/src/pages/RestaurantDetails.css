@@ -1,0 +1,23 @@
+/* src/pages/RestaurantDetails.css */
+
+.restaurant-details-page {
+    margin: 20px;
+  }
+  
+  .restaurant-details-page .MuiCard-root {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .restaurant-details-page .MuiCardMedia-root {
+    width: 100%;
+  }
+  
+  .restaurant-details-page .MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .restaurant-details-page .MuiTypography-body1 {
+    margin-top: 1rem;
+  }
+  

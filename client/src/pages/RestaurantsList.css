@@ -1,0 +1,79 @@
+/* Container for the whole page */
+.wrapper{
+    margin:20px;
+}
+
+.restaurants-list {
+    margin: 0 20px; /* Margin on both sides of the viewport */
+    padding: 0 16px; /* Optional padding to add some space inside the container */
+  }
+  
+  .restaurant-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on larger screens */
+    gap: 24px; /* Increased space between cards */
+    justify-content: center; /* Center cards horizontally */
+  }
+  
+  /* Card Styling */
+  .restaurant-card {
+    width: 100%;
+    max-width: 400px; /* Increase max-width to make cards wider */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .restaurant-cards {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .restaurant-cards {
+      grid-template-columns: 1fr; /* 1 card per row on smaller screens */
+      margin: 0; /* Remove margin on smaller screens */
+    }
+  }
+  
+  .restaurant-details {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin-top: 1.5rem; /* Increased margin between card content */
+  }
+  
+  .restaurant-info {
+    margin-bottom: 1rem; /* Increased space between location/cuisines and price */
+  }
+  
+  .restaurant-pricing {
+    margin-top: 1rem; /* Increased space between cuisines and price */
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; /* Margin above pagination */
+    margin-bottom: 2rem; /* Margin below pagination */
+  }
+  
+  .pagination button {
+    background-color: #d32f2f; /* Reddish color for button */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 0.5rem;
+  }
+  
+  .pagination button:disabled {
+    background-color: #b71c1c; /* Darker reddish color for disabled state */
+    cursor: not-allowed;
+  }
+  
+  .pagination span {
+    align-self: center;
+    margin: 0 1rem;
+    color: #1c1c1e; /* Dark text */
+  }

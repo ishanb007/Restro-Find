@@ -1,0 +1,26 @@
+/* Add some basic styling for the input fields */
+.search-fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-fields input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-fields button {
+    padding: 8px 16px;
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-fields button:hover {
+    background-color: #c12727;
+  }
+  

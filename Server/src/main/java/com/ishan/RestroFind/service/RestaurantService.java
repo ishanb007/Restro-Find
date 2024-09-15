@@ -26,8 +26,8 @@ public class RestaurantService {
         return restaurantRepo.findAll(pageable);
     }
 
-    public List<Restaurant> getRestaurantsByLocation(double longitude, double latitude, double range) {
-        return restaurantRepo.findRestaurantsByLocation(longitude, latitude, range);
+    public Page<Restaurant> getRestaurantsByLocation(double longitude, double latitude, double range, Pageable pageable) {
+        return restaurantRepo.findRestaurantsByLocation(longitude, latitude, range*1000, pageable);
     }
 }
 
