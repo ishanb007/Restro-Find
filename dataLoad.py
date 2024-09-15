@@ -22,10 +22,12 @@ def connect_to_db():
 def insert_restaurant(cursor, restaurant):
     insert_sql = """
         INSERT IGNORE INTO restaurants 
-        (restaurant_id, name, latitude, longitude, address, city, locality, country_id, cuisines, image_url, rating_text, rating_color, aggregate_rating, average_cost_for_two, currency, has_table_booking, photo_url, menu_url)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        (restaurant_id, name, latitude, longitude, address, city, locality, country_id, cuisines, image_url, rating_text, rating_color, aggregate_rating, average_cost_for_two, currency, has_table_booking, photo_url, menu_url, book_url)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     
+    default_img = "https://res.cloudinary.com/dolrydrvd/image/upload/v1726392968/restaarant_f13loh.jpg"
+
     restaurant_id = restaurant["id"]
     name = restaurant["name"]
     latitude = float(restaurant["location"]["latitude"])
@@ -36,6 +38,8 @@ def insert_restaurant(cursor, restaurant):
     country_id = int(restaurant["location"]["country_id"])
     cuisines = json.dumps(restaurant["cuisines"])  # json string
     image_url = restaurant.get("thumb", "")
+    if not image_url:
+        image_url = default_img
     rating_text = restaurant["user_rating"]["rating_text"]
     rating_color = restaurant["user_rating"]["rating_color"]
     aggregate_rating = float(restaurant["user_rating"]["aggregate_rating"])
@@ -44,11 +48,12 @@ def insert_restaurant(cursor, restaurant):
     has_table_booking = bool(restaurant["has_table_booking"])
     photo_url = restaurant.get("photos_url", "")
     menu_url = restaurant.get("menu_url", "")
+    book_url = restaurant.get("book_url", "")
     
     # Execute SQL
     cursor.execute(insert_sql, (
         restaurant_id, name, latitude, longitude, address, city, locality, country_id, cuisines, image_url, 
-        rating_text, rating_color, aggregate_rating, average_cost_for_two, currency, has_table_booking, photo_url, menu_url
+        rating_text, rating_color, aggregate_rating, average_cost_for_two, currency, has_table_booking, photo_url, menu_url, book_url
     ))
 
 # Load and Parse JSON Files
