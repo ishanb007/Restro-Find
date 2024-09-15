@@ -29,5 +29,9 @@ public class RestaurantService {
     public Page<Restaurant> getRestaurantsByLocation(double longitude, double latitude, double range, Pageable pageable) {
         return restaurantRepo.findRestaurantsByLocation(longitude, latitude, range*1000, pageable);
     }
+
+    public Page<Restaurant> filterRestaurants(Integer countryId, Integer averageCost, String cuisine, String name, Pageable pageable) {
+        return restaurantRepo.filterRestaurants(countryId, averageCost, cuisine, name, pageable);
+    }
 }
 

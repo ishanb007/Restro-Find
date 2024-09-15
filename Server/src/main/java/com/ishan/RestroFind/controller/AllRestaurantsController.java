@@ -39,4 +39,18 @@ public class AllRestaurantsController {
         Page<Restaurant> restaurants = restaurantService.getRestaurantsByLocation(longitude, latitude, range, pageRequest);
         return ResponseEntity.ok(restaurants);
     }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<Restaurant>> filterRestaurants(
+            @RequestParam(required = false) Integer countryId,
+            @RequestParam(required = false) Integer averageCost,
+            @RequestParam(required = false) String cuisine,  // Single cuisine
+            @RequestParam(required = false) String name,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Restaurant> restaurants = restaurantService.filterRestaurants(countryId, averageCost, cuisine, name, pageRequest);
+        return ResponseEntity.ok(restaurants);
+    }
 }

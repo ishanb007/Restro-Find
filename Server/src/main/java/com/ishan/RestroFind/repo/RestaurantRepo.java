@@ -23,5 +23,24 @@ public interface RestaurantRepo extends JpaRepository<Restaurant, String>, Pagin
             @Param("latitude") double latitude,
             @Param("range") double range,
             Pageable pageable);  // range in meters
+
+
+    @Query(value = "SELECT * FROM restaurants " +
+            "WHERE (:countryId IS NULL OR country_id = :countryId) " +
+            "AND (:averageCost IS NULL OR average_cost_for_two < :averageCost) " +
+            "AND (:cuisine IS NULL OR FIND_IN_SET(:cuisine, REPLACE(REPLACE(cuisines, '\"', ''), ' ', '')) > 0) " +
+            "AND (:name IS NULL OR name LIKE %:name%)",
+            countQuery = "SELECT COUNT(*) FROM restaurants " +
+                    "WHERE (:countryId IS NULL OR country_id = :countryId) " +
+                    "AND (:averageCost IS NULL OR average_cost_for_two < :averageCost) " +
+                    "AND (:cuisine IS NULL OR FIND_IN_SET(:cuisine, REPLACE(REPLACE(cuisines, '\"', ''), ' ', '')) > 0) " +
+                    "AND (:name IS NULL OR name LIKE %:name%)",
+            nativeQuery = true)
+    Page<Restaurant> filterRestaurants(
+            @Param("countryId") Integer countryId,
+            @Param("averageCost") Integer averageCost,
+            @Param("cuisine") String cuisine,  // Single cuisine filter
+            @Param("name") String name,
+            Pageable pageable);
 }
 
