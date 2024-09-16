@@ -12,7 +12,7 @@
     margin-bottom: 20px;
   }
   
-  .search-fields {
+  .filter-form {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -20,7 +20,7 @@
     margin-bottom: 30px;
   }
   
-  .search-fields div {
+  .filter-form div {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -28,20 +28,20 @@
     max-width: 300px;
   }
   
-  .search-fields label {
+  .filter-form label {
     margin-bottom: 10px;
     font-weight: bold;
     color: #555;
   }
   
-  .search-fields input,
-  .search-fields select {
+  .filter-form input,
+  .filter-form select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .search-fields button {
+  .filter-form button {
     background-color: #d32f2f;
     color: white;
     padding: 10px 20px;
@@ -50,7 +50,7 @@
     cursor: pointer;
   }
   
-  .search-fields button:hover {
+  .filter-form button:hover {
     background-color: #c12727;
     ;
   }
